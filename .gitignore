@@ -1,0 +1,9 @@
+node_modules/
+.vite/
+
+# Large binary files
+*.xlsx
+temp_wwm.zip
+
+# Extracted/derived data
+xlsx_extracted/

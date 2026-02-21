@@ -1,0 +1,29 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python3:*)",
+      "Bash(python:*)",
+      "Bash(where:*)",
+      "Bash(node --version:*)",
+      "Bash(node -e:*)",
+      "Bash(node -e \":*)",
+      "Bash(powershell -Command:*)",
+      "Bash(npm init:*)",
+      "Bash(npm install:*)",
+      "Bash(python3.exe:*)",
+      "Bash(py:*)",
+      "Bash(powershell -File:*)",
+      "Bash(powershell -ExecutionPolicy Bypass -File \"d:/Repo/WWM/extract_cells.ps1\")",
+      "Bash(powershell -ExecutionPolicy Bypass -File \"d:/Repo/WWM/extract_formulas2.ps1\")",
+      "Bash(powershell -ExecutionPolicy Bypass -File \"d:/Repo/WWM/extract_formulas3.ps1\")",
+      "Bash(powershell -ExecutionPolicy Bypass -File \"d:/Repo/WWM/extract_strings.ps1\")",
+      "Bash(powershell -ExecutionPolicy Bypass -File:*)",
+      "Bash(/tmp/extract_cells.ps1:*)",
+      "Bash(/tmp/inspect_healer.ps1:*)",
+      "Bash(/tmp/inspect_healer2.ps1:*)",
+      "Bash(/tmp/find_healer.ps1:*)",
+      "Bash(/tmp/extract_all.ps1:*)",
+      "Bash(/tmp/find_dps.ps1:*)"
+    ]
+  }
+}
