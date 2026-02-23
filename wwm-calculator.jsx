@@ -20,7 +20,7 @@ const BUILDS = {
     rotationTime: 64.3,
     assumptions: [
       "Buffs: Morale Chant Lv6, Hawking (飞隼4), ATK Food, Qianshan",
-      "Mystic: Wildfire Spark, Dragon's Breath",
+      "Mystic: Wildfire Spark only (other slots inactive in rotation)",
       "Rotation: Xiao loop → Vagrant Sword charges → Legion Crusher → Shooting Star",
       "10% Exhaust uptime, Monster DEF 270",
     ],
