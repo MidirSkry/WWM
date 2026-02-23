@@ -20,7 +20,7 @@ const BUILDS = {
     rotationTime: 64.3,
     assumptions: [
       "Buffs: Morale Chant Lv6, Hawking (飞隼4), ATK Food, Qianshan",
-      "Mystic: Wildfire Spark only (other slots inactive in rotation)",
+      "Mystic: Wildfire Spark",
       "Rotation: Xiao loop → Vagrant Sword charges → Legion Crusher → Shooting Star",
       "10% Exhaust uptime, Monster DEF 270",
     ],
@@ -57,7 +57,7 @@ const BUILDS = {
     rotationTime: 28.5,
     assumptions: [
       "Buffs: Morale Chant Lv6, Hawking (飞隼4 17.5%), ATK Food",
-      "Mystic: Wildfire Spark, Dragon's Breath, Unfading Flower",
+      "Mystic: Wildfire Spark, Dragon's Breath",
       "Rotation: Fan Light combos → Spring Sorrow → Spring Away → Drunken Poet (3 cycles)",
       "10% Exhaust uptime, Monster DEF 270",
     ],
