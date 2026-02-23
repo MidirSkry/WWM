@@ -148,7 +148,7 @@ const BUILDS = {
     assumptions: [
       "Buffs: Morale Chant Lv6, Hawking (飞隼4), ATK Food",
       "Mystic: Wildfire Spark, Echoes of Oblivion, Shadow Step",
-      "Rotation: Rope Dart Q → Light combos → Rodent Rampage (133 hits) → 3x Flamelash combos → Flaming Meteor",
+      "Rotation: Rope Dart Q → Light combos → Rodent Rampage (133 hits) → 3x Flamelash combos → Shooting Star",
       "Monster DEF 270",
     ],
 
@@ -208,7 +208,7 @@ const BUILDS = {
     assumptions: [
       "Buffs: Morale Chant Lv6, ATK Food (no Hawking)",
       "Mystic: Wildfire Spark",
-      "Rotation: Flaming Meteor → 5x Galecloud Cleave (Lv3 Charge) + Followups",
+      "Rotation: Shooting Star → 5x Galecloud Cleave (Lv3 Charge) + Followups",
       "Monster DEF 270",
     ],
 
