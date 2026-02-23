@@ -245,10 +245,10 @@ const BUILDS = {
 // DAMAGE CALCULATION ENGINE
 // ═══════════════════════════════════════════════════════════
 
-function calcDamageExpectation(panel, skill, config) {
+function calcDamageExpectation(panel, skill, config, forcePanel) {
   // Hit zone coefficients: use per-entry Excel values (ak/al/am/an) if present
   let critiCoeff, affCoeff, grazeCoeff;
-  if (skill.ak !== undefined) {
+  if (skill.ak !== undefined && !forcePanel) {
     const critiDmg = (panel.critiDmg || 0.5) + (skill.dfBonus || 0);
     critiCoeff = skill.ak * (1 + critiDmg) + (skill.am || 0);
     affCoeff   = skill.al || 0;
@@ -336,7 +336,7 @@ function calcDamageExpectation(panel, skill, config) {
   return (phyTotal + attriTotal) * (1 + (skill.hm || 0)) * (skill.count || 0);
 }
 
-function calcBuildDPS(panel, buildKey) {
+function calcBuildDPS(panel, buildKey, forcePanel) {
   const build = BUILDS[buildKey];
   if (!build) return { dps: 0, skills: [], total: 0 };
   const config = build.config;
@@ -344,13 +344,13 @@ function calcBuildDPS(panel, buildKey) {
   let total = 0;
 
   for (const entry of build.rotation) {
-    const dmg = calcDamageExpectation(panel, entry, config);
+    const dmg = calcDamageExpectation(panel, entry, config, forcePanel);
     skills.push({ ...entry, totalDmg: dmg });
     total += dmg;
   }
   for (const entry of build.specialEntries) {
     const count = entry.countFromTime ? build.rotationTime : entry.count;
-    const dmg = calcDamageExpectation(panel, { ...entry, count }, config);
+    const dmg = calcDamageExpectation(panel, { ...entry, count }, config, forcePanel);
     skills.push({ ...entry, count, totalDmg: dmg });
     total += dmg;
   }
@@ -362,7 +362,7 @@ function calcBuildDPS(panel, buildKey) {
 }
 
 function calcStatPriority(panel, buildKey) {
-  const base = calcBuildDPS(panel, buildKey);
+  const base = calcBuildDPS(panel, buildKey, true);
   const priorities = [];
   const testStats = [
     { key: "power", label: "Power", value: 29.8 },
@@ -385,7 +385,7 @@ function calcStatPriority(panel, buildKey) {
     else if (stat.key === "agility") { modified.minAtk += stat.value * 0.9; modified.criti += stat.value * 0.00076; }
     else if (stat.key === "momentum") { modified.maxAtk += stat.value * 0.9; modified.affinity += stat.value * 0.00038; }
     else { modified[stat.key] = (modified[stat.key] || 0) + stat.value; }
-    const result = calcBuildDPS(modified, buildKey);
+    const result = calcBuildDPS(modified, buildKey, true);
     const improvement = base.dps > 0 ? (result.dps - base.dps) / base.dps : 0;
     priorities.push({ ...stat, newDps: result.dps, improvement });
   }
