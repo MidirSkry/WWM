@@ -4,7 +4,7 @@ const src = readFileSync('d:/Repo/WWM/wwm-calculator.jsx', 'utf8');
 const lines = src.split('\n');
 
 // Lines 7-332 contain BASE_STATS_85, BUILDS, calcDamageExpectation, calcBuildDPS
-const codeLines = lines.slice(6, 405);
+const codeLines = lines.slice(6, 400);
 const codeStr = codeLines.join('\n');
 
 // Write extracted code to a temp file and import it

@@ -20,7 +20,6 @@ const BUILDS = {
     rotationTime: 64.3,
     assumptions: [
       "Buffs: Morale Chant Lv6, Hawking (飞隼4), ATK Food, Qianshan",
-      "Mystic: Wildfire Spark",
       "Rotation: Xiao loop → Vagrant Sword charges → Legion Crusher → Shooting Star",
       "10% Exhaust uptime, Monster DEF 270",
     ],
@@ -57,7 +56,6 @@ const BUILDS = {
     rotationTime: 28.5,
     assumptions: [
       "Buffs: Morale Chant Lv6, Hawking (飞隼4 17.5%), ATK Food",
-      "Mystic: Wildfire Spark",
       "Rotation: Fan Light combos → Spring Sorrow → Spring Away → Drunken Poet (3 cycles)",
       "10% Exhaust uptime, Monster DEF 270",
     ],
@@ -102,7 +100,6 @@ const BUILDS = {
     rotationTime: 44,
     assumptions: [
       "Buffs: Morale Chant Lv6, Hawking (飞隼4), ATK Food",
-      "Mystic: Wildfire Spark",
       "Rotation: 3x (Sword Q → Spear Q → Normals → Crisscrossing) → Blood Burst + Bleed Ticks",
       "Monster DEF 270",
     ],
@@ -147,7 +144,6 @@ const BUILDS = {
     rotationTime: 65.5,
     assumptions: [
       "Buffs: Morale Chant Lv6, Hawking (飞隼4), ATK Food",
-      "Mystic: Wildfire Spark, Echoes of Oblivion, Shadow Step",
       "Rotation: Rope Dart Q → Light combos → Rodent Rampage (133 hits) → 3x Flamelash combos → Shooting Star",
       "Monster DEF 270",
     ],
@@ -207,7 +203,6 @@ const BUILDS = {
     rotationTime: 24.9,
     assumptions: [
       "Buffs: Morale Chant Lv6, ATK Food (no Hawking)",
-      "Mystic: Wildfire Spark",
       "Rotation: Shooting Star → 5x Galecloud Cleave (Lv3 Charge) + Followups",
       "Monster DEF 270",
     ],
