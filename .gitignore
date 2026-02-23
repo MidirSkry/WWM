@@ -1,4 +1,5 @@
 node_modules/
+dist/
 .vite/
 
 # Large binary files
@@ -7,3 +8,7 @@ temp_wwm.zip
 
 # Extracted/derived data
 xlsx_extracted/
+
+# Temp scripts
+_temp_calc*.mjs
+_debug_*.mjs
