@@ -543,19 +543,26 @@ function BarChart({ value, max, color, bg = "#1a1a2e" }) {
 
 export default function WWMCalculator() {
   const [buildKey, setBuildKey] = useState("nameless");
-  const [panel, setPanel] = useState({ ...BUILDS.nameless.defaultPanel });
+  const [panels, setPanels] = useState(() => {
+    const init = {};
+    for (const [k, b] of Object.entries(BUILDS)) init[k] = { ...b.defaultPanel };
+    return init;
+  });
   const [showPriority, setShowPriority] = useState(true);
   const [themeKey, setThemeKey] = useState("ocean");
   const t = THEMES[themeKey];
+  const panel = panels[buildKey];
 
   const handleBuildChange = useCallback((key) => {
     setBuildKey(key);
-    setPanel({ ...BUILDS[key].defaultPanel });
   }, []);
 
-  const handlePanelChange = useCallback((key, val) => {
-    setPanel(prev => ({ ...prev, [key]: parseFloat(val) || 0 }));
-  }, []);
+  const handlePanelChange = useCallback((key, val, isPct) => {
+    setPanels(prev => ({
+      ...prev,
+      [buildKey]: { ...prev[buildKey], [key]: isPct ? (parseFloat(val) || 0) / 100 : (parseFloat(val) || 0) },
+    }));
+  }, [buildKey]);
 
   const build = BUILDS[buildKey];
   const result = useMemo(() => calcBuildDPS(panel, buildKey), [panel, buildKey]);
@@ -657,13 +664,13 @@ export default function WWMCalculator() {
             {PANEL_FIELDS.map(f => (
               <label key={f.key} style={{ display: "flex", flexDirection: "column", gap: 3 }}>
                 <span style={{ fontSize: 13, color: t.accentMid, letterSpacing: 0.5, fontWeight: 500 }}>
-                  {f.label}
+                  {f.label}{f.pct ? " (%)" : ""}
                 </span>
                 <input
                   type="number"
-                  step={f.step}
-                  value={panel[f.key] ?? 0}
-                  onChange={e => handlePanelChange(f.key, e.target.value)}
+                  step={f.pct ? f.step * 100 : f.step}
+                  value={f.pct ? +((panel[f.key] ?? 0) * 100).toFixed(4) : (panel[f.key] ?? 0)}
+                  onChange={e => handlePanelChange(f.key, e.target.value, f.pct)}
                   style={{
                     background: t.inputBg, border: `1px solid ${t.accentDeep}`, borderRadius: 4,
                     color: t.text, padding: "8px 10px", fontSize: 16, fontWeight: 600,
