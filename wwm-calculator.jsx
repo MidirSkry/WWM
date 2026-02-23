@@ -309,8 +309,8 @@ function calcDamageExpectation(panel, skill, config, forcePanel) {
   const avgAtk = minAtk >= maxAtk ? minAtk : (minAtk + maxAtk) / 2;
 
   // Per-entry attribute range (fk/fr)
-  const entryMinAttri = skill.fk !== undefined ? skill.fk : (panel.minAttri || 0);
-  const entryMaxAttri = skill.fr !== undefined ? skill.fr : (panel.maxAttri || 0);
+  const entryMinAttri = (skill.fk !== undefined && !forcePanel) ? skill.fk : (panel.minAttri || 0);
+  const entryMaxAttri = (skill.fr !== undefined && !forcePanel) ? skill.fr : (panel.maxAttri || 0);
   const avgAttri = entryMinAttri >= entryMaxAttri ? entryMinAttri : (entryMinAttri + entryMaxAttri) / 2;
 
   // Physical ATK: affinity zone uses maxAtk, graze uses minAtk, crit/normal use avgAtk
@@ -727,8 +727,8 @@ export default function WWMCalculator() {
                       </span>
                       <span style={{ color: isGood ? t.statGood : t.statBad, fontWeight: 700, fontSize: 13 }}>
                         {isGood ? "+" : ""}{(p.improvement * 100).toFixed(2)}%
-                        {isGood && <span style={{ color: t.accentMid, fontWeight: 400 }}> (+{p.newDps - result.dps} DPS)</span>}
-                        {!isGood && <span style={{ color: t.statBadText }}> waste</span>}
+                        {isGood && <span style={{ color: t.accentMid, fontWeight: 400 }}> (+{Math.round(result.dps * p.improvement)} DPS)</span>}
+                        {!isGood && <span style={{ color: t.statBadText }}> {p.improvement === 0 ? "capped" : "waste"}</span>}
                       </span>
                     </div>
                     <BarChart
