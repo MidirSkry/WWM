@@ -526,9 +526,6 @@ const PANEL_FIELDS = [
   { key: "phyPen", label: "Physical Penetration", step: 0.1 },
   { key: "attriPen", label: "Attribute Penetration", step: 0.1 },
   { key: "attriDmgBonus", label: "Attribute DMG Bonus", step: 0.001, pct: true },
-  { key: "bossBoost", label: "Boss DMG Bonus", step: 0.01, pct: true },
-  { key: "attune", label: "Attunement", step: 0.01, pct: true },
-  { key: "dmgBoost", label: "DMG Bonus", step: 0.01, pct: true },
 ];
 
 function BarChart({ value, max, color, bg = "#1a1a2e" }) {
