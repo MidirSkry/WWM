@@ -403,6 +403,23 @@ function calcStatPriority(panel, buildKey) {
 // ═══════════════════════════════════════════════════════════
 
 const THEMES = {
+  ocean: {
+    name: "Ocean", btnSwatch: "#4a7aaa",
+    bg: "linear-gradient(170deg, #080c14 0%, #0a1020 40%, #0e1428 100%)",
+    headerOverlay: "rgba(20,40,70,.5)", headerBorder: "#162240",
+    accent: "#4a7aaa", accentSoft: "#6699bb", accentBright: "#b0ccee",
+    accentMid: "#6090b0", accentDim: "#4a7090", accentDeep: "#1a2e44",
+    accentBtn: "linear-gradient(135deg, #102040, #183060)",
+    text: "#c0d4e8",
+    panelBg: "linear-gradient(135deg, #0c1020, #0e1430)", panelBorder: "#182840",
+    dpsBg: "linear-gradient(135deg, #0e1830, #101c40)", dpsBorder: "#1e3058",
+    inputBg: "#08101c", sectionBg: "#0c1020",
+    footerBg: "#080e18", footerBorder: "#142030",
+    dpsGrad: "linear-gradient(90deg, #60c8ff, #00ffcc)",
+    barBg: "#0e1a28", barSpecial: "#335544",
+    goodColor: "#66ddaa", badColor: "#ff7766",
+    statGood: "#66ddaa", statBad: "#ff7766", statBadBg: "#221818", statBadText: "#553333",
+  },
   sky: {
     name: "Sky", btnSwatch: "#deeaf6", light: true,
     bg: "linear-gradient(170deg, #eef4fa 0%, #deeaf6 40%, #d0e0f0 100%)",
@@ -436,23 +453,6 @@ const THEMES = {
     barBg: "#1a1a2e", barSpecial: "#664422",
     goodColor: "#88cc88", badColor: "#ff6b6b",
     statGood: "#88dd88", statBad: "#ff6666", statBadBg: "#332222", statBadText: "#553333",
-  },
-  ocean: {
-    name: "Ocean", btnSwatch: "#4a7aaa",
-    bg: "linear-gradient(170deg, #080c14 0%, #0a1020 40%, #0e1428 100%)",
-    headerOverlay: "rgba(20,40,70,.5)", headerBorder: "#162240",
-    accent: "#4a7aaa", accentSoft: "#6699bb", accentBright: "#b0ccee",
-    accentMid: "#6090b0", accentDim: "#4a7090", accentDeep: "#1a2e44",
-    accentBtn: "linear-gradient(135deg, #102040, #183060)",
-    text: "#c0d4e8",
-    panelBg: "linear-gradient(135deg, #0c1020, #0e1430)", panelBorder: "#182840",
-    dpsBg: "linear-gradient(135deg, #0e1830, #101c40)", dpsBorder: "#1e3058",
-    inputBg: "#08101c", sectionBg: "#0c1020",
-    footerBg: "#080e18", footerBorder: "#142030",
-    dpsGrad: "linear-gradient(90deg, #60c8ff, #00ffcc)",
-    barBg: "#0e1a28", barSpecial: "#335544",
-    goodColor: "#66ddaa", badColor: "#ff7766",
-    statGood: "#66ddaa", statBad: "#ff7766", statBadBg: "#221818", statBadText: "#553333",
   },
   ember: {
     name: "Ember", btnSwatch: "#aa5522",
@@ -546,7 +546,7 @@ export default function WWMCalculator() {
     return init;
   });
   const [showPriority, setShowPriority] = useState(true);
-  const [themeKey, setThemeKey] = useState("sky");
+  const [themeKey, setThemeKey] = useState("ocean");
   const t = THEMES[themeKey];
   const buildOverrides = overrides[buildKey];
   const build = BUILDS[buildKey];
