@@ -403,6 +403,23 @@ function calcStatPriority(panel, buildKey) {
 // ═══════════════════════════════════════════════════════════
 
 const THEMES = {
+  sky: {
+    name: "Sky", btnSwatch: "#deeaf6", light: true,
+    bg: "linear-gradient(170deg, #eef4fa 0%, #deeaf6 40%, #d0e0f0 100%)",
+    headerOverlay: "rgba(60,110,170,.06)", headerBorder: "#a8c4dc",
+    accent: "#1a5c8c", accentSoft: "#144c78", accentBright: "#0a2844",
+    accentMid: "#2a5c88", accentDim: "#5080a0", accentDeep: "#b8d4e8",
+    accentBtn: "linear-gradient(135deg, #9cc4e0, #80b0d4)",
+    text: "#081828",
+    panelBg: "linear-gradient(135deg, #ddeaf6, #d0e2f0)", panelBorder: "#a4c4dc",
+    dpsBg: "linear-gradient(135deg, #d0e4f4, #c4d8ec)", dpsBorder: "#90b8d8",
+    inputBg: "#eef4f8", sectionBg: "#ddeaf6",
+    footerBg: "#d8e8f4", footerBorder: "#acc8e0",
+    dpsGrad: "linear-gradient(90deg, #1a5c8c, #0088cc)",
+    barBg: "#c0d8ec", barSpecial: "#3888aa",
+    goodColor: "#1a6020", badColor: "#c02020",
+    statGood: "#145015", statBad: "#991010", statBadBg: "#f0d0d0", statBadText: "#883030",
+  },
   dusk: {
     name: "Dusk", btnSwatch: "#7c6aaa",
     bg: "linear-gradient(170deg, #080810 0%, #0c0c1a 40%, #12101e 100%)",
@@ -488,23 +505,6 @@ const THEMES = {
     goodColor: "#2a6a2a", badColor: "#cc2020",
     statGood: "#1a5a1a", statBad: "#aa1010", statBadBg: "#f0d0d0", statBadText: "#883030",
   },
-  sky: {
-    name: "Sky", btnSwatch: "#deeaf6", light: true,
-    bg: "linear-gradient(170deg, #eef4fa 0%, #deeaf6 40%, #d0e0f0 100%)",
-    headerOverlay: "rgba(60,110,170,.06)", headerBorder: "#a8c4dc",
-    accent: "#1a5c8c", accentSoft: "#144c78", accentBright: "#0a2844",
-    accentMid: "#2a5c88", accentDim: "#5080a0", accentDeep: "#b8d4e8",
-    accentBtn: "linear-gradient(135deg, #9cc4e0, #80b0d4)",
-    text: "#081828",
-    panelBg: "linear-gradient(135deg, #ddeaf6, #d0e2f0)", panelBorder: "#a4c4dc",
-    dpsBg: "linear-gradient(135deg, #d0e4f4, #c4d8ec)", dpsBorder: "#90b8d8",
-    inputBg: "#eef4f8", sectionBg: "#ddeaf6",
-    footerBg: "#d8e8f4", footerBorder: "#acc8e0",
-    dpsGrad: "linear-gradient(90deg, #1a5c8c, #0088cc)",
-    barBg: "#c0d8ec", barSpecial: "#3888aa",
-    goodColor: "#1a6020", badColor: "#c02020",
-    statGood: "#145015", statBad: "#991010", statBadBg: "#f0d0d0", statBadText: "#883030",
-  },
 };
 
 // ═══════════════════════════════════════════════════════════
@@ -546,7 +546,7 @@ export default function WWMCalculator() {
     return init;
   });
   const [showPriority, setShowPriority] = useState(true);
-  const [themeKey, setThemeKey] = useState("ocean");
+  const [themeKey, setThemeKey] = useState("sky");
   const t = THEMES[themeKey];
   const buildOverrides = overrides[buildKey];
   const build = BUILDS[buildKey];
