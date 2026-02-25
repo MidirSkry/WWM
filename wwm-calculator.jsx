@@ -540,28 +540,29 @@ function BarChart({ value, max, color, bg = "#1a1a2e" }) {
 
 export default function WWMCalculator() {
   const [buildKey, setBuildKey] = useState("nameless");
-  const [panels, setPanels] = useState(() => {
+  const [overrides, setOverrides] = useState(() => {
     const init = {};
-    for (const [k, b] of Object.entries(BUILDS)) init[k] = { ...b.defaultPanel };
+    for (const k of Object.keys(BUILDS)) init[k] = {};
     return init;
   });
   const [showPriority, setShowPriority] = useState(true);
   const [themeKey, setThemeKey] = useState("ocean");
   const t = THEMES[themeKey];
-  const panel = panels[buildKey];
+  const buildOverrides = overrides[buildKey];
+  const build = BUILDS[buildKey];
+  const panel = useMemo(() => ({ ...build.defaultPanel, ...buildOverrides }), [build, buildOverrides]);
 
   const handleBuildChange = useCallback((key) => {
     setBuildKey(key);
   }, []);
 
   const handlePanelChange = useCallback((key, val, isPct) => {
-    setPanels(prev => ({
+    setOverrides(prev => ({
       ...prev,
-      [buildKey]: { ...prev[buildKey], [key]: isPct ? (parseFloat(val) || 0) / 100 : (parseFloat(val) || 0) },
+      [buildKey]: { ...prev[buildKey], [key]: val === "" ? undefined : (isPct ? (parseFloat(val) || 0) / 100 : (parseFloat(val) || 0)) },
     }));
   }, [buildKey]);
 
-  const build = BUILDS[buildKey];
   const result = useMemo(() => calcBuildDPS(panel, buildKey), [panel, buildKey]);
   const priorities = useMemo(() => showPriority ? calcStatPriority(panel, buildKey) : [], [panel, buildKey, showPriority]);
 
@@ -666,7 +667,8 @@ export default function WWMCalculator() {
                 <input
                   type="number"
                   step={f.pct ? f.step * 100 : f.step}
-                  value={f.pct ? +((panel[f.key] ?? 0) * 100).toFixed(4) : (panel[f.key] ?? 0)}
+                  placeholder={f.pct ? +((build.defaultPanel[f.key] ?? 0) * 100).toFixed(4) : (build.defaultPanel[f.key] ?? 0)}
+                  value={buildOverrides[f.key] !== undefined ? (f.pct ? +((buildOverrides[f.key]) * 100).toFixed(4) : buildOverrides[f.key]) : ""}
                   onChange={e => handlePanelChange(f.key, e.target.value, f.pct)}
                   style={{
                     background: t.inputBg, border: `1px solid ${t.accentDeep}`, borderRadius: 4,
